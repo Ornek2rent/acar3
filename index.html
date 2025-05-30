@@ -1,25 +1,21 @@
 <!-- new mode -->
+<!-- index.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rent-a-Car | Book Now</title>
 
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'" />
-
-  <!-- Link to external CSS -->
   <link rel="stylesheet" href="css/style.css" />
+  <script src="js/config.js" defer></script>
+  <script src="js/load-header.js" defer></script> <!-- Modular header loader -->
+  <script src="js/index.js" defer></script> <!-- Updated logic script -->
 </head>
 <body data-theme="light">
-
-  <!-- Inline header HTML -->
-  <header>
-    <h2>Rent-a-Car</h2>
-    <button id="darkModeToggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
-  </header>
+  <!-- Header gets loaded here -->
+  <div id="header-container"></div>
 
   <main class="form-container">
     <h1>Book Your Car</h1>
@@ -41,27 +37,5 @@
     </form>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
   </main>
-
-  <!-- Inline JS -->
-  <script>
-    // Dark mode toggle
-    document.getElementById("darkModeToggle").addEventListener("click", () => {
-      const currentTheme = document.body.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.body.setAttribute("data-theme", newTheme);
-    });
-
-    // Booking form submission handler
-    document.getElementById("bookingForm").addEventListener("submit", (event) => {
-      event.preventDefault(); // prevent real submission for demo
-      
-      // Add your form submission logic here
-      alert("Booking submitted! (Demo mode)");
-
-      // Optionally, reset the form:
-      // event.target.reset();
-    });
-  </script>
-
 </body>
 </html>
