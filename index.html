@@ -1,24 +1,24 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rent-a-Car | Book Now</title>
 
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'" />
+
   <link rel="stylesheet" href="css/style.css" />
-  <script src="js/config.js" defer></script>
-  <script src="js/load-header.js" defer></script> <!-- Modular header loader -->
-  <script src="js/index.js" defer></script> <!-- Updated logic script -->
 </head>
 <body data-theme="light">
-  <!-- Header gets loaded here -->
-  <div id="header-container"></div>
+
+  <header>
+    <h2>Rent-a-Car</h2>
+    <button id="darkModeToggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+  </header>
 
   <main class="form-container">
     <h1>Book Your Car</h1>
-    <form id="bookingForm" target="hidden_iframe" method="POST" action="">
+    <form id="bookingForm" method="POST" action="#">
       <label for="pickupLocation">Pickup Location:</label>
       <input type="text" id="pickupLocation" name="pickupLocation" required />
 
@@ -36,5 +36,21 @@
     </form>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
   </main>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById("darkModeToggle").addEventListener("click", () => {
+      const currentTheme = document.body.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", newTheme);
+    });
+
+    // Form submit redirects to vehicle selection page
+    document.getElementById("bookingForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      window.location.href = "pages/vehicle-selection.html";
+    });
+  </script>
+
 </body>
 </html>
