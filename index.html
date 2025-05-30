@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rent-a-Car | Book Now</title>
 
+  <!-- Content Security Policy -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'" />
 
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body data-theme="light">
 
+  <!-- Inline header HTML -->
   <header>
     <h2>Rent-a-Car</h2>
     <button id="darkModeToggle" aria-label="Toggle dark mode">Toggle Dark Mode</button>
@@ -18,7 +21,7 @@
 
   <main class="form-container">
     <h1>Book Your Car</h1>
-    <form id="bookingForm" method="POST">
+    <form id="bookingForm" target="hidden_iframe" method="POST" action="">
       <label for="pickupLocation">Pickup Location:</label>
       <input type="text" id="pickupLocation" name="pickupLocation" required />
 
@@ -37,6 +40,7 @@
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
   </main>
 
+  <!-- Inline JS -->
   <script>
     // Dark mode toggle
     document.getElementById("darkModeToggle").addEventListener("click", () => {
@@ -45,11 +49,15 @@
       document.body.setAttribute("data-theme", newTheme);
     });
 
-    // Form submit redirects to vehicle selection page with fixed path
+    // Booking form submission handler
     document.getElementById("bookingForm").addEventListener("submit", (event) => {
-      event.preventDefault();
-      // Use relative path with ./ to avoid URL issues
-      window.location.href = "./pages/vehicle-selection.html";
+      event.preventDefault(); // prevent real submission for demo
+      
+      // Add your form submission logic here
+      alert("Booking submitted! (Demo mode)");
+
+      // Optionally, reset the form:
+      // event.target.reset();
     });
   </script>
 
